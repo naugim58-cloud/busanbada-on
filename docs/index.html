@@ -18,11 +18,48 @@
 <button class="beach" onclick="selectBeach(2,this)"><img alt="송정 해수욕장" src="https://commons.wikimedia.org/wiki/Special:FilePath/Songjeong%20Beach.jpg"><b data-b="2">송정</b><small data-c="2">여유</small></button>
 <button class="beach" onclick="selectBeach(3,this)"><img alt="스카이라인이 보이는 해운대" src="https://commons.wikimedia.org/wiki/Special:FilePath/Haeundae%20District%20and%20Beach.jpg"><b data-b="3">해운대</b><small data-c="3">혼잡</small></button></div>
 <article class="weather"><div><span id="weatherName">다대포</span><div class="temp" id="temp">28°</div></div><div class="metric"><span data-t="rain">강수 확률</span><b id="rain">10%</b></div><div class="metric"><span data-t="dust">미세먼지</span><b id="dust">좋음</b></div><div class="metric"><span data-t="crowd">해변 인파</span><b id="crowd">여유</b></div></article></section>
-<section class="notice"><span>🔔</span><div><b data-t="wait">실시간 웨이팅 알림</b><p data-t="waitDesc">해운대 주차장 대기 18분 · 광안리 카페거리 원활</p></div></section><p class="credits">Beach photos: Wikimedia Commons contributors (CC licenses)</p><footer><span data-t="footer">바다를 더 편안하게, 부산바다 ON</span></footer>
+<section class="notice"><span>🔔</span><div><b data-t="wait">실시간 웨이팅 알림</b><p data-t="waitDesc">해운대 주차장 대기 18분 · 광안리 카페거리 원활</p></div></section><p class="credits">Beach photos: Wikimedia Commons contributors (CC licenses) · Live weather: <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a></p><footer><span data-t="footer">바다를 더 편안하게, 부산바다 ON</span></footer>
 </main>
 <script>
-const data=[{ko:'다대포',en:'Dadaepo',ja:'多大浦',zh:'多大浦',temp:'28°',rain:'10%',dust:['좋음','Good','良い','良好'],crowd:['여유','Relaxed','余裕','宽松']},{ko:'광안리',en:'Gwangalli',ja:'広安里',zh:'广安里',temp:'29°',rain:'20%',dust:['보통','Moderate','普通','一般'],crowd:['보통','Moderate','普通','一般']},{ko:'송정',en:'Songjeong',ja:'松亭',zh:'松亭',temp:'27°',rain:'0%',dust:['좋음','Good','良い','良好'],crowd:['여유','Relaxed','余裕','宽松']},{ko:'해운대',en:'Haeundae',ja:'海雲台',zh:'海云台',temp:'30°',rain:'30%',dust:['보통','Moderate','普通','一般'],crowd:['혼잡','Crowded','混雑','拥挤']}];let current=0,lang='ko';const L={ko:{helpTitle:'무엇을 도와드릴까요?',helpDesc:'해변, 날씨, 시설에 관해 질문하면 바로 답변해 드려요.',welcome:'안녕하세요! 궁금한 내용을 입력해 주세요.',question:'예: 해운대 주차장은 어디예요?',send:'보내기',date:'7월 30일 수요일 · 부산',hero:'오늘, 어떤 바다로<br>떠나볼까요?',aiTitle:'AI의 추천 받아보기',aiDesc:'지금 내게 딱 맞는 부산 바다 찾기',comfort:'해변 쾌적도',tap:'해변을 눌러 확인하세요',rain:'강수 확률',dust:'미세먼지',crowd:'해변 인파',wait:'실시간 웨이팅 알림',waitDesc:'해운대 주차장 대기 18분 · 광안리 카페거리 원활',footer:'바다를 더 편안하게, 부산바다 ON'},en:{helpTitle:'How can we help?',helpDesc:'Ask about beaches, weather, or facilities for an instant answer.',welcome:'Hello! What would you like to know?',question:'e.g. Where is Haeundae parking?',send:'Send',date:'Wednesday, July 30 · Busan',hero:'Which sea will you<br>visit today?',aiTitle:'Get an AI recommendation',aiDesc:'Find the right Busan beach for you',comfort:'Beach comfort',tap:'Tap a beach for details',rain:'Chance of rain',dust:'Fine dust',crowd:'Crowd level',wait:'Live waiting alerts',waitDesc:'Haeundae parking: 18 min · Gwangalli café street: smooth',footer:'A more comfortable sea, Busan Sea ON'},ja:{helpTitle:'何をお手伝いしましょうか？',helpDesc:'海辺、天気、施設についてすぐに回答します。',welcome:'こんにちは！質問を入力してください。',question:'例：海雲台の駐車場は？',send:'送信',date:'7月30日 水曜日 · 釜山',hero:'今日はどの海へ<br>出かけますか？',aiTitle:'AIおすすめを見る',aiDesc:'あなたにぴったりの釜山の海',comfort:'ビーチ快適度',tap:'ビーチを選択してください',rain:'降水確率',dust:'微細粉塵',crowd:'混雑度',wait:'リアルタイム待機通知',waitDesc:'海雲台駐車場 18分 · 広安里カフェ通り スムーズ',footer:'海をもっと快適に、釜山海 ON'},zh:{helpTitle:'有什么可以帮助您？',helpDesc:'询问海滩、天气或设施，即可立即获得答复。',welcome:'您好！请输入您的问题。',question:'例如：海云台停车场在哪里？',send:'发送',date:'7月30日 星期三 · 釜山',hero:'今天想去<br>哪一片海？',aiTitle:'获取 AI 推荐',aiDesc:'找到最适合您的釜山海滩',comfort:'海滩舒适度',tap:'点击海滩查看详情',rain:'降雨概率',dust:'细颗粒物',crowd:'拥挤程度',wait:'实时等候提醒',waitDesc:'海云台停车场等待18分钟 · 广安里咖啡街畅通',footer:'让大海更舒适，釜山大海 ON'}};
-function toggleHelp(){document.getElementById('support').classList.toggle('open')}function toggleLang(){document.getElementById('langMenu').classList.toggle('open')}function languageIndex(){return lang==='ko'?0:lang==='en'?1:lang==='ja'?2:3}function selectBeach(i,el){current=i;document.querySelectorAll('.beach').forEach(x=>x.classList.remove('active'));el.classList.add('active');renderWeather()}function renderWeather(){const d=data[current],idx=languageIndex();document.getElementById('weatherName').textContent=d[lang];document.getElementById('temp').textContent=d.temp;document.getElementById('rain').textContent=d.rain;document.getElementById('dust').textContent=d.dust[idx];document.getElementById('crowd').textContent=d.crowd[idx]}function setLang(l){lang=l;document.documentElement.lang=l;document.getElementById('langLabel').textContent=l==='ko'?'한국어':l==='en'?'English':l==='ja'?'日本語':'中文';document.querySelectorAll('[data-t]').forEach(e=>e.innerHTML=L[l][e.dataset.t]);document.querySelector('[data-ph]').placeholder=L[l].question;document.querySelectorAll('[data-b]').forEach((e,i)=>e.textContent=data[i][l]);document.querySelectorAll('[data-c]').forEach((e,i)=>e.textContent=data[i].crowd[languageIndex()]);document.getElementById('langMenu').classList.remove('open');renderWeather()}function aiRecommend(){const best=data.filter(x=>x.crowd[0]==='여유')[Math.floor(Math.random()*2)];const lead=lang==='ko'?'오늘은 ':lang==='en'?'Today, try ':lang==='ja'?'今日は ':'今天推荐 ';alert(lead+best[lang]+'!')}
+const data=[{ko:'다대포',en:'Dadaepo',ja:'多大浦',zh:'多大浦',lat:35.0468,lon:128.9657,temp:'28°',rain:'10%',dust:['좋음','Good','良い','良好'],crowd:['여유','Relaxed','余裕','宽松']},{ko:'광안리',en:'Gwangalli',ja:'広安里',zh:'广安里',lat:35.1532,lon:129.1187,temp:'29°',rain:'20%',dust:['보통','Moderate','普通','一般'],crowd:['보통','Moderate','普通','一般']},{ko:'송정',en:'Songjeong',ja:'松亭',zh:'松亭',lat:35.1786,lon:129.1997,temp:'27°',rain:'0%',dust:['좋음','Good','良い','良好'],crowd:['여유','Relaxed','余裕','宽松']},{ko:'해운대',en:'Haeundae',ja:'海雲台',zh:'海云台',lat:35.1587,lon:129.1604,temp:'30°',rain:'30%',dust:['보통','Moderate','普通','一般'],crowd:['혼잡','Crowded','混雑','拥挤']}];let current=0,lang='ko';const L={ko:{helpTitle:'무엇을 도와드릴까요?',helpDesc:'해변, 날씨, 시설에 관해 질문하면 바로 답변해 드려요.',welcome:'안녕하세요! 궁금한 내용을 입력해 주세요.',question:'예: 해운대 주차장은 어디예요?',send:'보내기',date:'7월 30일 수요일 · 부산',hero:'오늘, 어떤 바다로<br>떠나볼까요?',aiTitle:'AI의 추천 받아보기',aiDesc:'지금 내게 딱 맞는 부산 바다 찾기',comfort:'해변 쾌적도',tap:'해변을 눌러 확인하세요',rain:'강수 확률',dust:'미세먼지',crowd:'해변 인파',wait:'실시간 웨이팅 알림',waitDesc:'해운대 주차장 대기 18분 · 광안리 카페거리 원활',footer:'바다를 더 편안하게, 부산바다 ON'},en:{helpTitle:'How can we help?',helpDesc:'Ask about beaches, weather, or facilities for an instant answer.',welcome:'Hello! What would you like to know?',question:'e.g. Where is Haeundae parking?',send:'Send',date:'Wednesday, July 30 · Busan',hero:'Which sea will you<br>visit today?',aiTitle:'Get an AI recommendation',aiDesc:'Find the right Busan beach for you',comfort:'Beach comfort',tap:'Tap a beach for details',rain:'Chance of rain',dust:'Fine dust',crowd:'Crowd level',wait:'Live waiting alerts',waitDesc:'Haeundae parking: 18 min · Gwangalli café street: smooth',footer:'A more comfortable sea, Busan Sea ON'},ja:{helpTitle:'何をお手伝いしましょうか？',helpDesc:'海辺、天気、施設についてすぐに回答します。',welcome:'こんにちは！質問を入力してください。',question:'例：海雲台の駐車場は？',send:'送信',date:'7月30日 水曜日 · 釜山',hero:'今日はどの海へ<br>出かけますか？',aiTitle:'AIおすすめを見る',aiDesc:'あなたにぴったりの釜山の海',comfort:'ビーチ快適度',tap:'ビーチを選択してください',rain:'降水確率',dust:'微細粉塵',crowd:'混雑度',wait:'リアルタイム待機通知',waitDesc:'海雲台駐車場 18分 · 広安里カフェ通り スムーズ',footer:'海をもっと快適に、釜山海 ON'},zh:{helpTitle:'有什么可以帮助您？',helpDesc:'询问海滩、天气或设施，即可立即获得答复。',welcome:'您好！请输入您的问题。',question:'例如：海云台停车场在哪里？',send:'发送',date:'7月30日 星期三 · 釜山',hero:'今天想去<br>哪一片海？',aiTitle:'获取 AI 推荐',aiDesc:'找到最适合您的釜山海滩',comfort:'海滩舒适度',tap:'点击海滩查看详情',rain:'降雨概率',dust:'细颗粒物',crowd:'拥挤程度',wait:'实时等候提醒',waitDesc:'海云台停车场等待18分钟 · 广安里咖啡街畅通',footer:'让大海更舒适，釜山大海 ON'}};
+const liveText={ko:{loading:'불러오는 중',now:'실시간',error:'연결 오류'},en:{loading:'Loading',now:'Live',error:'Connection error'},ja:{loading:'読込中',now:'リアルタイム',error:'接続エラー'},zh:{loading:'加载中',now:'实时',error:'连接错误'}};
+let weatherRequestId=0;
+function toggleHelp(){document.getElementById('support').classList.toggle('open')}
+function toggleLang(){document.getElementById('langMenu').classList.toggle('open')}
+function languageIndex(){return lang==='ko'?0:lang==='en'?1:lang==='ja'?2:3}
+function selectBeach(i,el){current=i;document.querySelectorAll('.beach').forEach(x=>x.classList.remove('active'));el.classList.add('active');renderWeather();loadLiveWeather(i)}
+function renderWeather(){
+  const d=data[current],idx=languageIndex(),live=d.live;
+  const status=d.loading?liveText[lang].loading:d.error?liveText[lang].error:live?liveText[lang].now:'';
+  document.getElementById('weatherName').textContent=d[lang]+(status?' · '+status:'');
+  document.getElementById('temp').textContent=d.loading?'…':live?Math.round(live.temperature)+'°':d.temp;
+  document.getElementById('rain').textContent=d.loading?'…':live?Math.round(live.rainChance)+'%':d.rain;
+  document.getElementById('dust').textContent=d.loading?'…':live?Math.round(live.pm10)+' μg/m³':d.dust[idx];
+  document.getElementById('crowd').textContent=d.crowd[idx];
+}
+async function loadLiveWeather(index){
+  const requestId=++weatherRequestId,d=data[index];
+  d.loading=true;d.error=false;
+  if(current===index)renderWeather();
+  const forecastUrl=`https://api.open-meteo.com/v1/forecast?latitude=${d.lat}&longitude=${d.lon}&current=temperature_2m,precipitation_probability&timezone=Asia%2FSeoul`;
+  const airUrl=`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${d.lat}&longitude=${d.lon}&current=pm10&timezone=Asia%2FSeoul`;
+  try{
+    const [weatherResponse,airResponse]=await Promise.all([fetch(forecastUrl),fetch(airUrl)]);
+    if(!weatherResponse.ok||!airResponse.ok)throw new Error('Weather service unavailable');
+    const [weather,air]=await Promise.all([weatherResponse.json(),airResponse.json()]);
+    const temperature=weather.current?.temperature_2m,rainChance=weather.current?.precipitation_probability,pm10=air.current?.pm10;
+    if(!Number.isFinite(temperature)||!Number.isFinite(rainChance)||!Number.isFinite(pm10))throw new Error('Incomplete weather data');
+    d.live={temperature,rainChance,pm10};
+    d.error=false;
+  }catch(error){
+    d.error=true;
+  }finally{
+    d.loading=false;
+    if(requestId===weatherRequestId&&current===index)renderWeather();
+  }
+}
+function setLang(l){lang=l;document.documentElement.lang=l;document.getElementById('langLabel').textContent=l==='ko'?'한국어':l==='en'?'English':l==='ja'?'日本語':'中文';document.querySelectorAll('[data-t]').forEach(e=>e.innerHTML=L[l][e.dataset.t]);document.querySelector('[data-ph]').placeholder=L[l].question;document.querySelectorAll('[data-b]').forEach((e,i)=>e.textContent=data[i][l]);document.querySelectorAll('[data-c]').forEach((e,i)=>e.textContent=data[i].crowd[languageIndex()]);document.getElementById('langMenu').classList.remove('open');renderWeather()}
+function aiRecommend(){const best=data.filter(x=>x.crowd[0]==='여유')[Math.floor(Math.random()*2)];const lead=lang==='ko'?'오늘은 ':lang==='en'?'Today, try ':lang==='ja'?'今日は ':'今天推荐 ';alert(lead+best[lang]+'!')}
 const AI_ENDPOINT='https://busanbada-on.vercel.app/api/chat';
 const conversation=[];
 const aiMessages={
@@ -76,4 +113,5 @@ document.getElementById('question').addEventListener('keydown',event=>{
     sendQuestion();
   }
 });
+loadLiveWeather(0);
 </script></body></html>
