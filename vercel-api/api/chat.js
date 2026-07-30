@@ -58,7 +58,11 @@ export default async function handler(req, res) {
     const result = await response.json();
     if (!response.ok) {
       console.error("Gemini API error", response.status, result?.error?.message);
-      return res.status(502).json({ error: "AI 답변을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요." });
+      return res.status(502).json({
+        error: "AI 답변을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.",
+        upstreamStatus: response.status,
+        upstreamCode: result?.error?.status || "UNKNOWN",
+      });
     }
     const answer = result?.candidates?.[0]?.content?.parts
       ?.map((part) => part.text || "")
