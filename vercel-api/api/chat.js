@@ -1,5 +1,6 @@
 const ALLOWED_ORIGINS = new Set([
   "https://naugim58-cloud.github.io",
+  "https://busan-sea-on-guide.yeonhui-lim-5750.chatgpt.site",
 ]);
 
 const SYSTEM_INSTRUCTION = `당신은 '부산바다 ON'의 친절한 AI 고객센터 상담원입니다.
