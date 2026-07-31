@@ -133,7 +133,14 @@ PLACE NAME<TAB>RATING<TAB>LATITUDE<TAB>LONGITUDE`;
       places,
       source: "Google Maps",
       checkedAt: new Date().toISOString(),
-      ...(req.query?.debug === "1" ? { debug: { answer, sources } } : {}),
+      ...(req.query?.debug === "1" ? {
+        debug: {
+          answer,
+          sources,
+          candidateKeys: Object.keys(candidate || {}),
+          groundingMetadata: candidate?.groundingMetadata || null,
+        },
+      } : {}),
     });
   } catch (error) {
     console.error("Nearby rated places error", error);
