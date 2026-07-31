@@ -2,10 +2,50 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>부산바다 ON</title>
+<title>부산바다 ON</title><meta name="description" content="부산 해변의 날씨, 예상 인파, 편의시설, 주변 장소를 한눈에 확인하세요."><meta property="og:title" content="부산바다 ON"><meta property="og:description" content="부산의 바다를 한눈에"><meta property="og:type" content="website"><meta property="og:url" content="https://naugim58-cloud.github.io/busanbada-on/"><meta property="og:image" content="https://naugim58-cloud.github.io/busanbada-on/og-busanbada-on.png"><meta name="twitter:card" content="summary_large_image">
 <style>
 :root{--deep:#003f5c;--blue:#006d8f;--aqua:#16b7b1;--foam:#e8fbf8;--white:#fff;--ink:#07384a}*{box-sizing:border-box}body{margin:0;font-family:Arial,'Malgun Gothic',sans-serif;color:var(--ink);background:linear-gradient(145deg,#dff9f4 0%,#9ee5dc 45%,#59c4d5 100%);min-height:100vh}button,textarea,input{font:inherit}button{cursor:pointer}.app{max-width:1040px;margin:24px auto;border-radius:30px;overflow:hidden;background:linear-gradient(180deg,#f4fffd,#e5f8f8);box-shadow:0 28px 80px #004c6550}.top{position:relative;z-index:100;height:88px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;overflow:visible;background:#f7fffdcc;backdrop-filter:blur(15px)}.menu,.langbtn{border:1px solid #d5eeeb;background:white;border-radius:15px;color:var(--deep);font-weight:800;padding:12px 15px}.menu{font-size:21px}.brand{text-align:center}.brand small,.eyebrow{font-size:10px;letter-spacing:2px;color:#178d96;font-weight:800}.brand h1{margin:5px 0 0;font-size:25px}.brand em{color:#ff846e;font-style:normal}.langwrap{position:relative;z-index:110}.langbtn{display:flex;align-items:center;gap:6px;white-space:nowrap}.langbtn small{padding-left:6px;border-left:1px solid #d5eeeb;font-size:10px;color:#568087}.langmenu{display:none;position:absolute;right:0;top:50px;z-index:1000;background:#fff;border:1px solid #d5eeeb;border-radius:13px;padding:6px;box-shadow:0 18px 40px #003f5c55}.langmenu.open{display:block}.langmenu button{width:105px;padding:9px;border:0;background:none;text-align:left;border-radius:8px}.langmenu button:hover{background:var(--foam)}.hero{position:relative;z-index:1;overflow:hidden;padding:43px 8%;color:white;background:radial-gradient(circle at 80% 20%,#54e0ceaa,transparent 30%),linear-gradient(125deg,#004b70 0%,#008d9d 48%,#2bc4b2 100%)}.hero:after{content:'';position:absolute;left:-10%;right:-10%;height:70px;bottom:-48px;border-radius:50%;background:#baf2e9aa}.hero p{margin:0 0 9px;font-size:12px}.hero h2{font-size:36px;line-height:1.22;margin:0;letter-spacing:-2px}.ai{position:relative;z-index:1;margin-top:25px;width:min(530px,100%);padding:15px 18px;display:flex;align-items:center;gap:13px;border:0;border-radius:17px;background:#fffffff2;color:var(--ink);text-align:left}.orb{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#ffb07c,#ff6f8e);color:white;font-size:21px}.ai b,.ai small{display:block}.ai small{margin-top:3px;color:#668087;font-size:11px}.ai i{margin-left:auto;color:#008b9b;font-size:22px}.ai-result{display:none;position:relative;z-index:1;width:min(530px,100%);margin-top:10px;padding:15px 17px;border-radius:16px;background:#07384ae8;color:white;box-shadow:0 12px 28px #003f5c42}.ai-result.open{display:block}.ai-result b{display:block;margin-bottom:6px;font-size:12px;color:#8be5d8}.ai-result p{margin:0;white-space:pre-wrap;line-height:1.55;font-size:13px}.content{padding:34px 5%}.heading{display:flex;align-items:end;justify-content:space-between}.heading h3{font-size:24px;margin:4px 0 0}.heading span:last-child{font-size:12px;color:#5c858b}.beaches{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}.beach{padding:0 0 10px;border:2px solid transparent;border-radius:21px;background:#fff;overflow:hidden;color:var(--ink);box-shadow:0 7px 18px #006c7b12}.beach img{display:block;width:100%;height:112px;object-fit:cover}.beach b,.beach small{display:block}.beach b{margin-top:10px}.beach small{margin-top:4px;color:#65868d}.beach.active{border-color:#00a2a6;box-shadow:0 10px 25px #008f9940;transform:translateY(-3px)}.weather{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:12px;align-items:center;padding:20px;border-radius:20px;color:white;background:linear-gradient(120deg,#04577a,#00a0a9)}.weather .temp{font-size:45px;font-weight:800}.metric{padding-left:15px;border-left:1px solid #ffffff52}.metric span{display:block;font-size:11px;opacity:.78}.metric b{display:block;margin-top:5px;font-size:17px}.map-card{margin-top:18px;overflow:hidden;border-radius:20px;background:#fff;box-shadow:0 8px 24px #006c7b18}.map-head{display:flex;align-items:center;justify-content:space-between;padding:14px 17px}.map-head b{font-size:14px}.map-head a{padding:7px 10px;border-radius:9px;background:var(--foam);color:#007c87;font-size:11px;font-weight:700;text-decoration:none}.map-card iframe{display:block;width:100%;height:270px;border:0}.notice{margin:0 5% 28px;padding:17px;display:flex;gap:13px;align-items:center;border-radius:18px;background:#d4f3ec}.notice b{font-size:13px}.notice p{margin:4px 0 0;font-size:11px;color:#537b82}.support{display:none;position:absolute;z-index:120;left:calc(50% - 480px);top:78px;width:370px;padding:22px;border-radius:20px;background:white;box-shadow:0 24px 60px #003f5c50}.support.open{display:block}.support h2{margin:6px 0;font-size:22px}.support p{font-size:12px;color:#638087}.chat{max-height:180px;overflow:auto;margin:14px 0;padding:10px;border-radius:12px;background:#eef9f7}.msg{width:max-content;max-width:90%;margin:6px 0;padding:9px 11px;border-radius:12px;font-size:12px;line-height:1.45;white-space:pre-wrap}.bot{background:white}.user{margin-left:auto;background:#008f99;color:white}.askrow{display:flex;gap:7px}.askrow input{min-width:0;flex:1;padding:11px;border:1px solid #cfe2e0;border-radius:10px}.askrow button{border:0;border-radius:10px;padding:0 14px;background:#008f99;color:white;font-weight:bold}.askrow button:disabled{opacity:.55;cursor:wait}.credits{padding:0 5% 22px;font-size:9px;color:#6b898e;text-align:center}.credits a{color:inherit}footer{text-align:center;padding:0 0 25px;font-size:11px;color:#66868c}@media(max-width:700px){.app{margin:0;border-radius:0;min-height:100vh}.top{padding:0 12px}.langbtn{padding:10px;font-size:11px}.langbtn small{display:none}.brand h1{font-size:21px}.hero{padding:34px 24px}.hero h2{font-size:31px}.content{padding:30px 18px}.beaches{gap:8px}.beach img{height:72px}.beach b{font-size:12px}.beach small{font-size:9px}.weather{grid-template-columns:1fr 1fr}.weather .temp{font-size:38px}.metric:nth-child(3){border-left:0}.map-card iframe{height:230px}.support{position:fixed;left:16px;right:16px;top:88px;width:auto}.notice{margin:0 18px 26px}}
 .menu{display:flex;align-items:center;gap:8px;font-size:21px;white-space:nowrap}.menu::after{content:'고객센터';font-size:13px}.menu-icon{font-size:21px;line-height:1}html[lang="en"] .menu::after{content:'Help Center'}html[lang="ja"] .menu::after{content:'お客様窓口'}html[lang="zh"] .menu::after{content:'客户中心'}@media(max-width:420px){.menu{padding:10px}.menu::after{font-size:10px}}
+.crowd-note{display:block;margin-top:5px;font-size:9px;font-weight:400;line-height:1.35;opacity:.78}.prediction-chip{display:inline-flex;align-items:center;gap:4px}.prediction-chip:before{content:'예측';padding:2px 5px;border-radius:999px;background:#ffffff28;font-size:8px}.challenge{margin:0 5% 28px;padding:22px;border-radius:22px;color:#fff;background:linear-gradient(125deg,#005b76,#00a29f 70%,#41c8ad);box-shadow:0 14px 32px #006d7b28}.challenge-head{display:flex;align-items:start;justify-content:space-between;gap:16px}.challenge h3{margin:5px 0 6px;font-size:22px}.challenge p{margin:0;font-size:11px;line-height:1.5;opacity:.84}.challenge-progress{min-width:68px;text-align:right;font-size:23px;font-weight:800}.stamp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0}.stamp{display:grid;place-items:center;min-height:70px;padding:8px;border:1px dashed #ffffff70;border-radius:14px;background:#ffffff13;text-align:center}.stamp i{font-style:normal;font-size:20px;filter:grayscale(1);opacity:.6}.stamp b{margin-top:5px;font-size:10px}.stamp.done{border-style:solid;background:#fff;color:#006a75}.stamp.done i{filter:none;opacity:1}.challenge-actions{display:flex;align-items:center;gap:12px}.challenge-actions button{padding:11px 15px;border:0;border-radius:11px;background:#fff;color:#006a75;font-weight:800;font-size:12px}.challenge-message{font-size:10px;line-height:1.45}.progress-track{height:6px;margin-top:10px;overflow:hidden;border-radius:99px;background:#ffffff32}.progress-track span{display:block;height:100%;width:0;background:#ffe88b;transition:width .3s}@media(max-width:700px){.challenge{margin:0 18px 26px}.stamp-grid{gap:5px}.stamp{min-height:62px;padding:5px}.challenge-actions{align-items:flex-start;flex-direction:column}}
+.map-card iframe{height:460px}.map-actions{display:flex;align-items:center;gap:6px}.map-actions button{padding:7px 10px;border:0;border-radius:9px;background:#007f89;color:#fff;font-size:11px;font-weight:800}.map-card.expanded{position:fixed;z-index:500;inset:12px;margin:0;border-radius:22px;box-shadow:0 24px 80px #003f5c88}.map-card.expanded iframe{height:calc(100vh - 62px)}body.map-open{overflow:hidden}@media(max-width:700px){.map-card iframe{height:520px}.map-card.expanded{inset:0;border-radius:0}.map-head{gap:8px}.map-head b{font-size:11px}.map-actions a{display:none}}
+/* Premium ocean direction: midnight water, pearl foam, sea-glass teal and a restrained coral sunset. */
+:root{--midnight:#041f30;--abyss:#073b50;--lagoon:#087f86;--glass:#3cc7bc;--pearl:#f8fbf7;--sand:#efe2c4;--coral:#ff7f6f;--ink:#082f40}
+body{background:
+ radial-gradient(circle at 9% 4%,#3ec7bd60 0 11%,transparent 31%),
+ radial-gradient(circle at 92% 18%,#f0d29b70 0 9%,transparent 29%),
+ linear-gradient(145deg,#031d2c 0%,#075066 44%,#0b8d8e 72%,#9de2d8 100%);
+ background-attachment:fixed}
+.app{border:1px solid #ffffff52;background:linear-gradient(180deg,#f9fcf9 0%,#e9f7f4 64%,#f5f0e6 100%);box-shadow:0 38px 110px #001823a8,0 0 0 1px #ffffff2e}
+.top{border-bottom:1px solid #d4e9e5;background:#fbfffcdf;box-shadow:0 8px 26px #052f4015}
+.menu,.langbtn{border-color:#cadfdb;background:linear-gradient(145deg,#fff,#f3f8f5);box-shadow:0 8px 22px #06374815;transition:transform .2s,box-shadow .2s}
+.menu:hover,.langbtn:hover{transform:translateY(-2px);box-shadow:0 12px 26px #06374825}
+.brand small,.eyebrow{color:#077d83}.brand h1{color:var(--midnight)}.brand em{color:var(--coral)}
+.hero{padding-top:50px;padding-bottom:58px;background:
+ radial-gradient(circle at 78% 9%,#62e7d45c 0 12%,transparent 31%),
+ radial-gradient(circle at 63% 130%,#e8c98a3d 0 24%,transparent 46%),
+ linear-gradient(125deg,#031f35 0%,#075b72 48%,#059c98 100%)}
+.hero:before{content:'';position:absolute;inset:0;background:linear-gradient(105deg,#fff0 38%,#ffffff13 51%,#fff0 64%);transform:translateX(-42%);animation:sheen 8s ease-in-out infinite}
+.hero:after{height:90px;bottom:-66px;border:1px solid #d9fff576;background:#b7eee5b8;box-shadow:0 -16px 55px #69d7c72b}
+@keyframes sheen{0%,55%{transform:translateX(-55%)}85%,100%{transform:translateX(70%)}}
+.hero h2{text-shadow:0 7px 22px #001d2f70}
+.ai{border:1px solid #ffffffc0;background:#fcfffcf3;box-shadow:0 18px 45px #001e3270;transition:transform .2s,box-shadow .2s}
+.ai:hover{transform:translateY(-3px);box-shadow:0 24px 52px #001e3285}.orb{background:linear-gradient(135deg,#ffba85,#ff6d76);box-shadow:0 7px 18px #ff6f7655}
+.content{padding-top:42px}.beach{border:1px solid #d8e7e2;background:linear-gradient(180deg,#fff,#f8fbf8);box-shadow:0 12px 30px #063e4c14;transition:transform .25s,box-shadow .25s,border-color .25s}
+.beach:hover{transform:translateY(-5px);box-shadow:0 20px 38px #063e4c24}.beach.active{border-color:#0aa9a5;box-shadow:0 19px 42px #037a8142}
+.beach img{filter:saturate(.9) contrast(1.05)}.beach.active img{filter:saturate(1.05) contrast(1.06)}
+.weather{position:relative;overflow:hidden;border:1px solid #ffffff43;background:linear-gradient(120deg,#052d47 0%,#086783 46%,#0ba49e 100%);box-shadow:0 18px 40px #063a5145}
+.weather:after{content:'';position:absolute;width:220px;height:220px;right:-100px;top:-130px;border:1px solid #ffffff38;border-radius:50%;box-shadow:0 0 0 28px #ffffff0b,0 0 0 58px #ffffff08}
+.metric,.weather>div{position:relative;z-index:1}.map-card{border:1px solid #d4e7e3;box-shadow:0 18px 42px #063c4d25}.map-head{background:linear-gradient(135deg,#fff,#f2faf7)}
+.map-actions button{background:linear-gradient(135deg,#075c75,#079d98);box-shadow:0 6px 14px #06778335}
+.challenge{position:relative;overflow:hidden;border:1px solid #ffffff45;background:
+ radial-gradient(circle at 92% 5%,#ffd99738 0 15%,transparent 36%),
+ linear-gradient(125deg,#052c48 0%,#086b80 48%,#0aa49b 100%);box-shadow:0 22px 50px #063b5045}
+.challenge:after{content:'';position:absolute;width:240px;height:240px;right:-90px;bottom:-170px;border-radius:50%;border:1px solid #ffffff35;box-shadow:0 0 0 30px #ffffff0b,0 0 0 62px #ffffff08}.challenge>*{position:relative;z-index:1}
+.stamp{backdrop-filter:blur(8px);transition:transform .2s,background .2s}.stamp:hover{transform:translateY(-3px)}.stamp.done{box-shadow:0 8px 20px #001c2d35}
+.support{border:1px solid #ffffffaa;background:#fbfffcf4;backdrop-filter:blur(18px);box-shadow:0 30px 80px #001f31a0}
+.langmenu{border-color:#d5e6e2;background:#fbfffcf5;backdrop-filter:blur(16px)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #ffac91;outline-offset:3px}
+@media(max-width:700px){body{background:#e8f7f4}.hero{padding-top:40px}.beaches{grid-template-columns:repeat(2,1fr)}.beach img{height:105px}.weather{border-radius:18px}.app{border:0}}
 </style>
 </head>
 <body><main class="app">
@@ -14,13 +54,13 @@
 <section class="hero"><p id="liveDate">오늘 · 부산</p><h2 data-t="hero">오늘, 어떤 바다로<br>떠나볼까요?</h2><button class="ai" id="recommendButton" onclick="aiRecommend()"><span class="orb">✦</span><span><b data-t="aiTitle">AI의 추천 받아보기</b><small data-t="aiDesc">추천 바다와 이유를 AI에게 물어보기</small></span><i>→</i></button><div class="ai-result" id="recommendResult" aria-live="polite"><b data-t="recommendTitle">AI 추천 결과</b><p id="recommendAnswer"></p></div></section>
 <section class="content"><div class="heading"><div><span class="eyebrow">BEACH NOW</span><h3 data-t="comfort">해변 쾌적도</h3></div><span data-t="tap">해변을 눌러 확인하세요</span></div>
 <div class="beaches" id="beaches">
-<button class="beach active" onclick="selectBeach(0,this)"><img alt="다대포 해수욕장" src="https://commons.wikimedia.org/wiki/Special:FilePath/Dadaepo%20Beach,%20Busan,%20Korea.jpg"><b data-b="0">다대포</b><small data-c="0">여유</small></button>
-<button class="beach" onclick="selectBeach(1,this)"><img alt="광안대교가 보이는 광안리" src="https://commons.wikimedia.org/wiki/Special:FilePath/Gwangalli%20Beach%20and%20bridge.jpg"><b data-b="1">광안리</b><small data-c="1">보통</small></button>
-<button class="beach" onclick="selectBeach(2,this)"><img alt="송정 해수욕장" src="https://commons.wikimedia.org/wiki/Special:FilePath/Songjeong%20Beach.jpg"><b data-b="2">송정</b><small data-c="2">여유</small></button>
-<button class="beach" onclick="selectBeach(3,this)"><img alt="스카이라인이 보이는 해운대" src="https://commons.wikimedia.org/wiki/Special:FilePath/Haeundae%20District%20and%20Beach.jpg"><b data-b="3">해운대</b><small data-c="3">혼잡</small></button></div>
-<article class="weather"><div><span id="weatherName">다대포</span><div class="temp" id="temp">28°</div></div><div class="metric"><span data-t="rain">강수 확률</span><b id="rain">10%</b></div><div class="metric"><span data-t="dust">미세먼지</span><b id="dust">좋음</b></div><div class="metric"><span data-t="crowd">해변 인파</span><b id="crowd">여유</b></div></article>
-<section class="map-card"><div class="map-head"><b id="mapTitle">다대포 시설·추천 장소 지도 · 항목을 선택하세요</b><a id="mapLink" target="_blank" rel="noreferrer">큰 지도 보기 ↗</a></div><iframe id="beachMap" title="선택한 해변의 편의시설, 관광지, 식당 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></section></section>
-<section class="notice"><span>🔔</span><div><b data-t="wait">실시간 웨이팅 알림</b><p data-t="waitDesc">해운대 주차장 대기 18분 · 광안리 카페거리 원활</p></div></section><p class="credits">Weather: <a href="https://www.weather.go.kr/w/forecast/life/beach.do" target="_blank" rel="noreferrer">기상청 해수욕장 실황</a> · Fine dust: <a href="https://open-meteo.com/en/docs/air-quality-api" target="_blank" rel="noreferrer">Open-Meteo</a> · Map: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a> · Photos: Wikimedia Commons contributors</p><footer><span data-t="footer">바다를 더 편안하게, 부산바다 ON</span></footer>
+<button class="beach active" onclick="selectBeach(0,this)"><img alt="다대포 해수욕장" src="https://commons.wikimedia.org/wiki/Special:FilePath/Dadaepo%20Beach,%20Busan,%20Korea.jpg"><b data-b="0">다대포</b><small data-c="0">예측 확인</small></button>
+<button class="beach" onclick="selectBeach(1,this)"><img alt="광안대교가 보이는 광안리" src="https://commons.wikimedia.org/wiki/Special:FilePath/Gwangalli%20Beach%20and%20bridge.jpg"><b data-b="1">광안리</b><small data-c="1">예측 확인</small></button>
+<button class="beach" onclick="selectBeach(2,this)"><img alt="송정 해수욕장" src="https://commons.wikimedia.org/wiki/Special:FilePath/Songjeong%20Beach.jpg"><b data-b="2">송정</b><small data-c="2">예측 확인</small></button>
+<button class="beach" onclick="selectBeach(3,this)"><img alt="스카이라인이 보이는 해운대" src="https://commons.wikimedia.org/wiki/Special:FilePath/Haeundae%20District%20and%20Beach.jpg"><b data-b="3">해운대</b><small data-c="3">예측 확인</small></button></div>
+<article class="weather"><div><span id="weatherName">다대포</span><div class="temp" id="temp">28°</div></div><div class="metric"><span data-t="rain">강수 확률</span><b id="rain">10%</b></div><div class="metric"><span data-t="dust">미세먼지</span><b id="dust">좋음</b></div><div class="metric"><span data-t="crowd">예상 인파</span><b id="crowd" class="prediction-chip">계산 중</b><small id="crowdNote" class="crowd-note">시간대·요일·계절·기상청 실황 기반</small></div></article>
+<section class="map-card" id="mapCard"><div class="map-head"><b id="mapTitle">다대포 시설·추천 장소 지도 · 항목을 선택하세요</b><div class="map-actions"><button id="mapExpandButton" onclick="toggleMapExpand()">지도 확대 ⛶</button><a id="mapLink" target="_blank" rel="noreferrer">OSM에서 보기 ↗</a></div></div><iframe id="beachMap" title="선택한 해변의 편의시설, 관광지, 식당 지도" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></section></section>
+<section class="challenge"><div class="challenge-head"><div><span class="eyebrow" style="color:#a9f2e4">BUSAN BEACH STAMP</span><h3 id="challengeTitle">부산 해변 도장깨기</h3><p id="challengeDesc">네 곳을 모두 방문 인증하고 완주 상품 응모권을 열어보세요.</p></div><div class="challenge-progress"><span id="stampCount">0</span>/4</div></div><div class="progress-track"><span id="stampProgress"></span></div><div class="stamp-grid" id="stampGrid"></div><div class="challenge-actions"><button id="verifyVisitButton" onclick="verifyVisit()">📍 현장에서 방문 인증</button><span class="challenge-message" id="challengeMessage">위치 정보는 인증 순간에만 사용되며 저장하지 않습니다.</span></div></section><p class="credits" id="credits"></p><footer><span data-t="footer">바다를 더 편안하게, 부산바다 ON</span></footer>
 </main>
 <script>
 const data=[{ko:'다대포',en:'Dadaepo',ja:'多大浦',zh:'多大浦',lat:35.0468,lon:128.9657,temp:'28°',rain:'10%',dust:['좋음','Good','良い','良好'],crowd:['여유','Relaxed','余裕','宽松']},{ko:'광안리',en:'Gwangalli',ja:'広安里',zh:'广安里',lat:35.1532,lon:129.1187,temp:'29°',rain:'20%',dust:['보통','Moderate','普通','一般'],crowd:['보통','Moderate','普通','一般']},{ko:'송정',en:'Songjeong',ja:'松亭',zh:'松亭',lat:35.1786,lon:129.1997,temp:'27°',rain:'0%',dust:['좋음','Good','良い','良好'],crowd:['여유','Relaxed','余裕','宽松']},{ko:'해운대',en:'Haeundae',ja:'海雲台',zh:'海云台',lat:35.1587,lon:129.1604,temp:'30°',rain:'30%',dust:['보통','Moderate','普通','一般'],crowd:['혼잡','Crowded','混雑','拥挤']}];let current=0,lang='ko';const L={ko:{language:'언어 설정',helpTitle:'무엇을 도와드릴까요?',helpDesc:'해변, 날씨, 시설에 관해 질문하면 AI가 바로 답변해 드려요.',welcome:'안녕하세요! 궁금한 내용을 입력해 주세요.',question:'예: 해운대 주차장은 어디예요?',send:'보내기',date:'7월 30일 수요일 · 부산',hero:'오늘, 어떤 바다로<br>떠나볼까요?',aiTitle:'AI의 추천 받아보기',aiDesc:'추천 바다와 이유를 AI에게 물어보기',recommendTitle:'AI 추천 결과',comfort:'해변 쾌적도',tap:'해변을 눌러 확인하세요',rain:'강수 확률',dust:'미세먼지',crowd:'해변 인파',wait:'실시간 웨이팅 알림',waitDesc:'해운대 주차장 대기 18분 · 광안리 카페거리 원활',footer:'바다를 더 편안하게, 부산바다 ON'},en:{language:'Language',helpTitle:'How can we help?',helpDesc:'Ask about beaches, weather, or facilities and AI will answer.',welcome:'Hello! What would you like to know?',question:'e.g. Where is Haeundae parking?',send:'Send',date:'Wednesday, July 30 · Busan',hero:'Which sea will you<br>visit today?',aiTitle:'Get an AI recommendation',aiDesc:'Ask AI for a beach and the reason',recommendTitle:'AI recommendation',comfort:'Beach comfort',tap:'Tap a beach for details',rain:'Chance of rain',dust:'Fine dust',crowd:'Crowd level',wait:'Live waiting alerts',waitDesc:'Haeundae parking: 18 min · Gwangalli café street: smooth',footer:'A more comfortable sea, Busan Sea ON'},ja:{language:'言語設定',helpTitle:'何をお手伝いしましょうか？',helpDesc:'海辺、天気、施設についてAIが回答します。',welcome:'こんにちは！質問を入力してください。',question:'例：海雲台の駐車場は？',send:'送信',date:'7月30日 水曜日 · 釜山',hero:'今日はどの海へ<br>出かけますか？',aiTitle:'AIおすすめを見る',aiDesc:'おすすめの海と理由をAIに聞く',recommendTitle:'AIおすすめ結果',comfort:'ビーチ快適度',tap:'ビーチを選択してください',rain:'降水確率',dust:'微細粉塵',crowd:'混雑度',wait:'リアルタイム待機通知',waitDesc:'海雲台駐車場 18分 · 広安里カフェ通り スムーズ',footer:'海をもっと快適に、釜山海 ON'},zh:{language:'语言设置',helpTitle:'有什么可以帮助您？',helpDesc:'询问海滩、天气或设施，AI 将立即回答。',welcome:'您好！请输入您的问题。',question:'例如：海云台停车场在哪里？',send:'发送',date:'7月30日 星期三 · 釜山',hero:'今天想去<br>哪一片海？',aiTitle:'获取 AI 推荐',aiDesc:'向 AI 询问推荐海滩及理由',recommendTitle:'AI 推荐结果',comfort:'海滩舒适度',tap:'点击海滩查看详情',rain:'降雨概率',dust:'细颗粒物',crowd:'拥挤程度',wait:'实时等候提醒',waitDesc:'海云台停车场等待18分钟 · 广安里咖啡街畅通',footer:'让大海更舒适，釜山大海 ON'}};
@@ -28,12 +68,31 @@ const liveText={ko:{loading:'불러오는 중',now:'기상청 실황',error:'연
 const rainLabel={ko:'1시간 강수량',en:'Rain in the last hour',ja:'1時間降水量',zh:'近1小时降水量'};
 const beachKeys=['dadaepo','gwangalli','songjeong','haeundae'];
 const KMA_WEATHER_ENDPOINT='https://busanbada-on.vercel.app/api/weather';
-const mapText={ko:{title:'시설·추천 장소 지도 · 항목을 선택하세요',open:'큰 지도 보기 ↗'},en:{title:'Facilities & rated places · Choose a filter',open:'Open large map ↗'},ja:{title:'施設・おすすめスポット · 項目を選択',open:'大きな地図を見る ↗'},zh:{title:'设施和推荐地点 · 请选择项目',open:'查看大地图 ↗'}};
+const mapText={ko:{title:'시설·추천 장소 지도 · 항목을 선택하세요',open:'OSM에서 보기 ↗',expand:'지도 확대 ⛶',collapse:'지도 축소 ✕'},en:{title:'Facilities & nearby places · Choose a filter',open:'View on OSM ↗',expand:'Expand map ⛶',collapse:'Close map ✕'},ja:{title:'施設・周辺スポット · 項目を選択',open:'OSMで見る ↗',expand:'地図を拡大 ⛶',collapse:'地図を閉じる ✕'},zh:{title:'设施和周边地点 · 请选择项目',open:'在 OSM 查看 ↗',expand:'放大地图 ⛶',collapse:'关闭地图 ✕'}};
+const crowdText={ko:{title:'예상 인파',tag:'예측',levels:['여유','보통','혼잡'],note:'시간대·요일·계절·기상청 실황 기반'},en:{title:'Estimated crowd',tag:'Estimate',levels:['Relaxed','Moderate','Crowded'],note:'Based on time, weekday, season and KMA weather'},ja:{title:'予想混雑度',tag:'予測',levels:['余裕','普通','混雑'],note:'時間帯・曜日・季節・気象庁実況による予測'},zh:{title:'预计人流',tag:'预测',levels:['宽松','一般','拥挤'],note:'基于时段、星期、季节和气象厅实况的预测'}};
+const creditsText={ko:'날씨: 기상청 해수욕장 실황 · 인파: 시간대·요일·계절·날씨 기반 무료 예측 · 미세먼지: Open-Meteo · 지도·장소: © OpenStreetMap contributors · 사진: Wikimedia Commons',en:'Weather: KMA beach observations · Crowd: free estimate based on time, weekday, season and weather · Air: Open-Meteo · Map & places: © OpenStreetMap contributors · Photos: Wikimedia Commons',ja:'天気: 気象庁海水浴場実況 · 混雑: 時間帯・曜日・季節・天気による無料予測 · 大気: Open-Meteo · 地図・場所: © OpenStreetMap contributors · 写真: Wikimedia Commons',zh:'天气：韩国气象厅海水浴场实况 · 人流：基于时段、星期、季节和天气的免费预测 · 空气：Open-Meteo · 地图与地点：© OpenStreetMap contributors · 图片：Wikimedia Commons'};
+const challengeText={ko:{title:'부산 해변 도장깨기',desc:'네 곳을 모두 방문 인증하고 완주 상품 응모권을 열어보세요.',verify:'📍 현장에서 방문 인증',privacy:'위치 정보는 인증 순간에만 사용되며 저장하지 않습니다.',checking:'현재 위치를 확인하고 있어요…',outside:'해변 인증 구역 안에서 다시 시도해 주세요.',error:'위치 권한을 허용하면 현장에서 인증할 수 있어요.',done:'🎉 4개 해변 완주! 상품 응모권이 열렸습니다.',stamped:' 도장을 획득했어요!'},en:{title:'Busan Beach Stamp Tour',desc:'Verify visits to all four beaches and unlock a prize entry.',verify:'📍 Verify my visit',privacy:'Location is used only for verification and is not stored.',checking:'Checking your location…',outside:'Please try again inside a beach verification zone.',error:'Allow location access to verify your visit.',done:'🎉 Tour complete! Your prize entry is unlocked.',stamped:' stamp unlocked!'},ja:{title:'釜山ビーチスタンプラリー',desc:'4つのビーチを訪問認証して景品応募権を獲得しましょう。',verify:'📍 現地で訪問認証',privacy:'位置情報は認証時のみ使用し、保存しません。',checking:'現在地を確認中…',outside:'ビーチ認証エリア内でもう一度お試しください。',error:'位置情報を許可すると現地認証できます。',done:'🎉 4ビーチ達成！景品応募権が開きました。',stamped:'のスタンプを獲得しました！'},zh:{title:'釜山海滩集章挑战',desc:'认证到访全部四个海滩，解锁奖品抽选资格。',verify:'📍 现场认证到访',privacy:'位置信息仅在认证时使用，不会保存。',checking:'正在确认当前位置…',outside:'请在海滩认证区域内重试。',error:'允许位置权限后即可现场认证。',done:'🎉 四个海滩全部完成！奖品抽选资格已解锁。',stamped:'印章已获得！'}};
 const beachIds=['dadaepo','gwangalli','songjeong','haeundae'];
 let weatherRequestId=0;
 function toggleHelp(){document.getElementById('support').classList.toggle('open')}
 function toggleLang(){document.getElementById('langMenu').classList.toggle('open')}
 function languageIndex(){return lang==='ko'?0:lang==='en'?1:lang==='ja'?2:3}
+function calculateCrowd(index){
+  const d=data[index],live=d.live;
+  const koreaNow=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Seoul'}));
+  const hour=koreaNow.getHours(),day=koreaNow.getDay(),month=koreaNow.getMonth()+1;
+  const hourly=hour<7?6:hour<10?20:hour<13?42:hour<17?58:hour<21?38:14;
+  let score=hourly+[-4,8,1,12][index];
+  if(day===0||day===6)score+=14;
+  if(month>=6&&month<=8)score+=12;
+  const temperature=live?.temperature??Number.parseFloat(d.temp),rainAmount=live?.rainAmount??0,pm10=live?.pm10??0;
+  if(temperature>=28)score+=8;else if(temperature<18)score-=10;
+  if(rainAmount>=3)score-=32;else if(rainAmount>0)score-=18;
+  if(pm10>=80)score-=8;
+  score=Math.max(5,Math.min(95,Math.round(score)));
+  return{score,label:crowdText[lang].levels[score<35?0:score<65?1:2]};
+}
+function renderCrowdTabs(){document.querySelectorAll('[data-c]').forEach((element,index)=>{const prediction=calculateCrowd(index);element.textContent=`${prediction.label} · ${crowdText[lang].tag} ${prediction.score}`;element.title=crowdText[lang].note})}
 function renderDate(){
   const locales={ko:'ko-KR',en:'en-US',ja:'ja-JP',zh:'zh-CN'};
   const locations={ko:'부산',en:'Busan',ja:'釜山',zh:'釜山'};
@@ -49,7 +108,11 @@ function renderWeather(){
   document.getElementById('temp').textContent=d.loading?'…':live?Math.round(live.temperature)+'°':d.temp;
   document.getElementById('rain').textContent=d.loading?'…':live?live.rainAmount.toFixed(1)+' mm':'—';
   document.getElementById('dust').textContent=d.loading?'…':live?Math.round(live.pm10)+' μg/m³':d.dust[idx];
-  document.getElementById('crowd').textContent=d.crowd[idx];
+  const crowd=calculateCrowd(current);
+  document.querySelector('[data-t="crowd"]').textContent=crowdText[lang].title;
+  document.getElementById('crowd').textContent=`${crowd.label} ${crowd.score}/100`;
+  document.getElementById('crowdNote').textContent=crowdText[lang].note;
+  renderCrowdTabs();
 }
 async function loadLiveWeather(index){
   const requestId=++weatherRequestId,d=data[index];
@@ -74,15 +137,48 @@ async function loadLiveWeather(index){
 }
 function renderMap(){
   const d=data[current];
-  const embedUrl=`https://busanbada-on.vercel.app/api/facility-map?beach=${beachIds[current]}`;
+  const embedUrl=`https://busanbada-on.vercel.app/api/facility-map?beach=${beachIds[current]}&lang=${lang}`;
   const map=document.getElementById('beachMap');
   if(map.src!==embedUrl)map.src=embedUrl;
   document.getElementById('mapTitle').textContent=d[lang]+' '+mapText[lang].title;
   const link=document.getElementById('mapLink');
   link.textContent=mapText[lang].open;
   link.href=`https://www.openstreetmap.org/?mlat=${d.lat}&mlon=${d.lon}#map=15/${d.lat}/${d.lon}`;
+  document.getElementById('mapExpandButton').textContent=document.getElementById('mapCard').classList.contains('expanded')?mapText[lang].collapse:mapText[lang].expand;
 }
-function setLang(l){lang=l;document.documentElement.lang=l;document.getElementById('langLabel').textContent=l==='ko'?'한국어':l==='en'?'English':l==='ja'?'日本語':'中文';document.querySelectorAll('[data-t]').forEach(e=>e.innerHTML=L[l][e.dataset.t]);document.querySelector('[data-ph]').placeholder=L[l].question;document.querySelectorAll('[data-b]').forEach((e,i)=>e.textContent=data[i][l]);document.querySelectorAll('[data-c]').forEach((e,i)=>e.textContent=data[i].crowd[languageIndex()]);document.getElementById('langMenu').classList.remove('open');renderDate();renderWeather();renderMap()}
+function setLang(l){lang=l;document.documentElement.lang=l;document.getElementById('langLabel').textContent=l==='ko'?'한국어':l==='en'?'English':l==='ja'?'日本語':'中文';document.querySelectorAll('[data-t]').forEach(e=>e.innerHTML=L[l][e.dataset.t]);document.querySelector('[data-ph]').placeholder=L[l].question;document.querySelectorAll('[data-b]').forEach((e,i)=>e.textContent=data[i][l]);document.getElementById('credits').textContent=creditsText[l];document.getElementById('langMenu').classList.remove('open');renderDate();renderWeather();renderMap();renderChallenge()}
+const STAMP_KEY='busanbada-on-stamps-v1';
+let visitedBeaches=[];try{const savedStamps=JSON.parse(localStorage.getItem(STAMP_KEY)||'[]');if(Array.isArray(savedStamps))visitedBeaches=savedStamps.filter(id=>beachIds.includes(id))}catch(error){visitedBeaches=[]}
+function distanceMeters(lat1,lon1,lat2,lon2){const r=6371000,toRad=value=>value*Math.PI/180,dLat=toRad(lat2-lat1),dLon=toRad(lon2-lon1),a=Math.sin(dLat/2)**2+Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;return r*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a))}
+function renderChallenge(message){
+  const copy=challengeText[lang],complete=visitedBeaches.length===4;
+  document.getElementById('challengeTitle').textContent=copy.title;
+  document.getElementById('challengeDesc').textContent=copy.desc;
+  document.getElementById('verifyVisitButton').textContent=copy.verify;
+  document.getElementById('stampCount').textContent=visitedBeaches.length;
+  document.getElementById('stampProgress').style.width=`${visitedBeaches.length*25}%`;
+  document.getElementById('challengeMessage').textContent=message||(complete?copy.done:copy.privacy);
+  document.getElementById('stampGrid').innerHTML=data.map((beach,index)=>`<div class="stamp ${visitedBeaches.includes(beachIds[index])?'done':''}"><i>${visitedBeaches.includes(beachIds[index])?'✓':'○'}</i><b>${beach[lang]}</b></div>`).join('');
+}
+function toggleMapExpand(){
+  const card=document.getElementById('mapCard'),expanded=card.classList.toggle('expanded');
+  document.body.classList.toggle('map-open',expanded);
+  document.getElementById('mapExpandButton').textContent=expanded?mapText[lang].collapse:mapText[lang].expand;
+}
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&document.getElementById('mapCard').classList.contains('expanded'))toggleMapExpand()});
+function verifyVisit(){
+  const copy=challengeText[lang],message=document.getElementById('challengeMessage'),button=document.getElementById('verifyVisitButton');
+  if(!navigator.geolocation){renderChallenge(copy.error);return}
+  message.textContent=copy.checking;button.disabled=true;
+  navigator.geolocation.getCurrentPosition(position=>{
+    const distances=data.map(beach=>distanceMeters(position.coords.latitude,position.coords.longitude,beach.lat,beach.lon));
+    const nearest=Math.min(...distances),index=distances.indexOf(nearest);
+    if(nearest<=700&&!visitedBeaches.includes(beachIds[index])){visitedBeaches=[...visitedBeaches,beachIds[index]];localStorage.setItem(STAMP_KEY,JSON.stringify(visitedBeaches));renderChallenge(data[index][lang]+copy.stamped)}
+    else if(nearest<=700)renderChallenge(data[index][lang]+' ✓');
+    else renderChallenge(copy.outside);
+    button.disabled=false;
+  },()=>{renderChallenge(copy.error);button.disabled=false},{enableHighAccuracy:true,timeout:12000,maximumAge:60000});
+}
 const AI_ENDPOINT='https://busanbada-on.vercel.app/api/chat';
 const conversation=[];
 const aiMessages={
@@ -101,7 +197,7 @@ async function aiRecommend(){
   panel.classList.add('open');
   answer.textContent=aiMessages[lang].recommending;
   button.disabled=true;
-  const conditions=data.map(item=>`${item[lang]}: 인파 ${item.crowd[languageIndex()]}${item.live?`, 기온 ${Math.round(item.live.temperature)}°, 1시간 강수량 ${item.live.rainAmount.toFixed(1)}mm`:''}`).join(' / ');
+  const conditions=data.map((item,index)=>`${item[lang]}: 예상 인파 ${calculateCrowd(index).label}(${calculateCrowd(index).score}/100)${item.live?`, 기온 ${Math.round(item.live.temperature)}°, 1시간 강수량 ${item.live.rainAmount.toFixed(1)}mm`:''}`).join(' / ');
   const prompt=`사용자의 언어로 답하세요. 다대포, 광안리, 송정, 해운대 중 오늘 방문할 해변 하나만 추천하세요. 첫 줄은 '추천 바다: 해변명', 다음 줄은 '추천 이유: 구체적인 이유' 형식으로 작성하세요. 현재 정보: ${conditions}`;
   try{
     const response=await fetch(AI_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:prompt,history:[]})});
@@ -162,6 +258,9 @@ document.getElementById('question').addEventListener('keydown',event=>{
 });
 renderMap();
 renderDate();
+renderChallenge();
+renderWeather();
+document.getElementById('credits').textContent=creditsText[lang];
 setInterval(renderDate,60000);
 loadLiveWeather(0);
 </script></body></html>
