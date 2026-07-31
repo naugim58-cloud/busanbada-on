@@ -63,7 +63,7 @@ PLACE NAME<TAB>RATING<TAB>LATITUDE<TAB>LONGITUDE`;
 
   try {
     const response = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent",
       {
         method: "POST",
         headers: {
@@ -85,7 +85,11 @@ PLACE NAME<TAB>RATING<TAB>LATITUDE<TAB>LONGITUDE`;
     const result = await response.json();
     if (!response.ok) {
       console.error("Google Maps grounding error", response.status, result?.error?.message);
-      return res.status(502).json({ error: "Google Maps 추천 장소를 불러오지 못했습니다." });
+      return res.status(502).json({
+        error: "Google Maps 추천 장소를 불러오지 못했습니다.",
+        upstreamStatus: response.status,
+        upstreamCode: result?.error?.status || "UNKNOWN",
+      });
     }
 
     const candidate = result?.candidates?.[0];
