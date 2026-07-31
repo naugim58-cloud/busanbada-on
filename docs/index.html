@@ -10,7 +10,7 @@
 <body><main class="app">
 <header class="top"><button class="menu" onclick="toggleHelp()" aria-label="AI 고객센터 열기">☰</button><div class="brand"><small>BUSAN SEA GUIDE</small><h1>부산바다 <em>ON</em></h1></div><div class="langwrap"><button class="langbtn" onclick="toggleLang()" aria-label="언어 설정 메뉴 열기">🌐 <span data-t="language">언어 설정</span><small id="langLabel">한국어</small></button><div class="langmenu" id="langMenu"><button onclick="setLang('ko')">한국어</button><button onclick="setLang('en')">English</button><button onclick="setLang('ja')">日本語</button><button onclick="setLang('zh')">中文</button></div></div></header>
 <aside class="support" id="support"><span class="eyebrow">AI HELP CENTER</span><h2 data-t="helpTitle">무엇을 도와드릴까요?</h2><p data-t="helpDesc">해변, 날씨, 시설에 관해 질문하면 AI가 바로 답변해 드려요.</p><div class="chat" id="chat" role="log" aria-live="polite"><div class="msg bot" data-t="welcome">안녕하세요! 궁금한 내용을 입력해 주세요.</div></div><div class="askrow"><input id="question" data-ph="question" placeholder="예: 해운대 주차장은 어디예요?"><button id="sendQuestionButton" onclick="sendQuestion()" data-t="send">보내기</button></div></aside>
-<section class="hero"><p data-t="date">7월 30일 수요일 · 부산</p><h2 data-t="hero">오늘, 어떤 바다로<br>떠나볼까요?</h2><button class="ai" id="recommendButton" onclick="aiRecommend()"><span class="orb">✦</span><span><b data-t="aiTitle">AI의 추천 받아보기</b><small data-t="aiDesc">추천 바다와 이유를 AI에게 물어보기</small></span><i>→</i></button><div class="ai-result" id="recommendResult" aria-live="polite"><b data-t="recommendTitle">AI 추천 결과</b><p id="recommendAnswer"></p></div></section>
+<section class="hero"><p id="liveDate">오늘 · 부산</p><h2 data-t="hero">오늘, 어떤 바다로<br>떠나볼까요?</h2><button class="ai" id="recommendButton" onclick="aiRecommend()"><span class="orb">✦</span><span><b data-t="aiTitle">AI의 추천 받아보기</b><small data-t="aiDesc">추천 바다와 이유를 AI에게 물어보기</small></span><i>→</i></button><div class="ai-result" id="recommendResult" aria-live="polite"><b data-t="recommendTitle">AI 추천 결과</b><p id="recommendAnswer"></p></div></section>
 <section class="content"><div class="heading"><div><span class="eyebrow">BEACH NOW</span><h3 data-t="comfort">해변 쾌적도</h3></div><span data-t="tap">해변을 눌러 확인하세요</span></div>
 <div class="beaches" id="beaches">
 <button class="beach active" onclick="selectBeach(0,this)"><img alt="다대포 해수욕장" src="https://commons.wikimedia.org/wiki/Special:FilePath/Dadaepo%20Beach,%20Busan,%20Korea.jpg"><b data-b="0">다대포</b><small data-c="0">여유</small></button>
@@ -33,6 +33,12 @@ let weatherRequestId=0;
 function toggleHelp(){document.getElementById('support').classList.toggle('open')}
 function toggleLang(){document.getElementById('langMenu').classList.toggle('open')}
 function languageIndex(){return lang==='ko'?0:lang==='en'?1:lang==='ja'?2:3}
+function renderDate(){
+  const locales={ko:'ko-KR',en:'en-US',ja:'ja-JP',zh:'zh-CN'};
+  const locations={ko:'부산',en:'Busan',ja:'釜山',zh:'釜山'};
+  const today=new Intl.DateTimeFormat(locales[lang],{timeZone:'Asia/Seoul',month:'long',day:'numeric',weekday:'long'}).format(new Date());
+  document.getElementById('liveDate').textContent=`${today} · ${locations[lang]}`;
+}
 function selectBeach(i,el){current=i;document.querySelectorAll('.beach').forEach(x=>x.classList.remove('active'));el.classList.add('active');renderWeather();renderMap();loadLiveWeather(i)}
 function renderWeather(){
   const d=data[current],idx=languageIndex(),live=d.live;
@@ -75,7 +81,7 @@ function renderMap(){
   link.textContent=mapText[lang].open;
   link.href=`https://www.openstreetmap.org/?mlat=${d.lat}&mlon=${d.lon}#map=15/${d.lat}/${d.lon}`;
 }
-function setLang(l){lang=l;document.documentElement.lang=l;document.getElementById('langLabel').textContent=l==='ko'?'한국어':l==='en'?'English':l==='ja'?'日本語':'中文';document.querySelectorAll('[data-t]').forEach(e=>e.innerHTML=L[l][e.dataset.t]);document.querySelector('[data-ph]').placeholder=L[l].question;document.querySelectorAll('[data-b]').forEach((e,i)=>e.textContent=data[i][l]);document.querySelectorAll('[data-c]').forEach((e,i)=>e.textContent=data[i].crowd[languageIndex()]);document.getElementById('langMenu').classList.remove('open');renderWeather();renderMap()}
+function setLang(l){lang=l;document.documentElement.lang=l;document.getElementById('langLabel').textContent=l==='ko'?'한국어':l==='en'?'English':l==='ja'?'日本語':'中文';document.querySelectorAll('[data-t]').forEach(e=>e.innerHTML=L[l][e.dataset.t]);document.querySelector('[data-ph]').placeholder=L[l].question;document.querySelectorAll('[data-b]').forEach((e,i)=>e.textContent=data[i][l]);document.querySelectorAll('[data-c]').forEach((e,i)=>e.textContent=data[i].crowd[languageIndex()]);document.getElementById('langMenu').classList.remove('open');renderDate();renderWeather();renderMap()}
 const AI_ENDPOINT='https://busanbada-on.vercel.app/api/chat';
 const conversation=[];
 const aiMessages={
@@ -154,5 +160,7 @@ document.getElementById('question').addEventListener('keydown',event=>{
   }
 });
 renderMap();
+renderDate();
+setInterval(renderDate,60000);
 loadLiveWeather(0);
 </script></body></html>
