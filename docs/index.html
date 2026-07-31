@@ -18,7 +18,7 @@
 <button class="beach" onclick="selectBeach(2,this)"><img alt="송정 해수욕장" src="https://commons.wikimedia.org/wiki/Special:FilePath/Songjeong%20Beach.jpg"><b data-b="2">송정</b><small data-c="2">여유</small></button>
 <button class="beach" onclick="selectBeach(3,this)"><img alt="스카이라인이 보이는 해운대" src="https://commons.wikimedia.org/wiki/Special:FilePath/Haeundae%20District%20and%20Beach.jpg"><b data-b="3">해운대</b><small data-c="3">혼잡</small></button></div>
 <article class="weather"><div><span id="weatherName">다대포</span><div class="temp" id="temp">28°</div></div><div class="metric"><span data-t="rain">강수 확률</span><b id="rain">10%</b></div><div class="metric"><span data-t="dust">미세먼지</span><b id="dust">좋음</b></div><div class="metric"><span data-t="crowd">해변 인파</span><b id="crowd">여유</b></div></article>
-<section class="map-card"><div class="map-head"><b id="mapTitle">다대포 편의시설 지도 · 화장실 / 샤워실 / 주차장</b><a id="mapLink" target="_blank" rel="noreferrer">큰 지도 보기 ↗</a></div><iframe id="beachMap" title="선택한 해변의 화장실, 샤워실, 주차장 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></section></section>
+<section class="map-card"><div class="map-head"><b id="mapTitle">다대포 시설·추천 장소 지도 · 항목을 선택하세요</b><a id="mapLink" target="_blank" rel="noreferrer">큰 지도 보기 ↗</a></div><iframe id="beachMap" title="선택한 해변의 편의시설, 관광지, 식당 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></section></section>
 <section class="notice"><span>🔔</span><div><b data-t="wait">실시간 웨이팅 알림</b><p data-t="waitDesc">해운대 주차장 대기 18분 · 광안리 카페거리 원활</p></div></section><p class="credits">Weather: <a href="https://www.weather.go.kr/w/forecast/life/beach.do" target="_blank" rel="noreferrer">기상청 해수욕장 실황</a> · Fine dust: <a href="https://open-meteo.com/en/docs/air-quality-api" target="_blank" rel="noreferrer">Open-Meteo</a> · Map: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a> · Photos: Wikimedia Commons contributors</p><footer><span data-t="footer">바다를 더 편안하게, 부산바다 ON</span></footer>
 </main>
 <script>
@@ -27,7 +27,7 @@ const liveText={ko:{loading:'불러오는 중',now:'기상청 실황',error:'연
 const rainLabel={ko:'1시간 강수량',en:'Rain in the last hour',ja:'1時間降水量',zh:'近1小时降水量'};
 const beachKeys=['dadaepo','gwangalli','songjeong','haeundae'];
 const KMA_WEATHER_ENDPOINT='https://busanbada-on.vercel.app/api/weather';
-const mapText={ko:{title:'편의시설 지도 · 화장실 / 샤워실 / 주차장',open:'큰 지도 보기 ↗'},en:{title:'Facilities · Toilets / Showers / Parking',open:'Open large map ↗'},ja:{title:'施設マップ · トイレ / シャワー / 駐車場',open:'大きな地図を見る ↗'},zh:{title:'设施地图 · 卫生间 / 淋浴间 / 停车场',open:'查看大地图 ↗'}};
+const mapText={ko:{title:'시설·추천 장소 지도 · 항목을 선택하세요',open:'큰 지도 보기 ↗'},en:{title:'Facilities & rated places · Choose a filter',open:'Open large map ↗'},ja:{title:'施設・おすすめスポット · 項目を選択',open:'大きな地図を見る ↗'},zh:{title:'设施和推荐地点 · 请选择项目',open:'查看大地图 ↗'}};
 const beachIds=['dadaepo','gwangalli','songjeong','haeundae'];
 let weatherRequestId=0;
 function toggleHelp(){document.getElementById('support').classList.toggle('open')}
