@@ -1,19 +1,27 @@
 const BEACHES = {
-  dadaepo: { name: "다대포해수욕장", lat: 35.0468, lon: 128.9657 },
-  gwangalli: { name: "광안리해수욕장", lat: 35.1532, lon: 129.1187 },
-  songjeong: { name: "송정해수욕장", lat: 35.1786, lon: 129.1997 },
-  haeundae: { name: "해운대해수욕장", lat: 35.1587, lon: 129.1604 },
+  dadaepo: { names: { ko: "다대포", en: "Dadaepo", ja: "多大浦", zh: "多大浦" }, lat: 35.0468, lon: 128.9657 },
+  gwangalli: { names: { ko: "광안리", en: "Gwangalli", ja: "広安里", zh: "广安里" }, lat: 35.1532, lon: 129.1187 },
+  songjeong: { names: { ko: "송정", en: "Songjeong", ja: "松亭", zh: "松亭" }, lat: 35.1786, lon: 129.1997 },
+  haeundae: { names: { ko: "해운대", en: "Haeundae", ja: "海雲台", zh: "海云台" }, lat: 35.1587, lon: 129.1604 },
 };
 
-const PLACE_TYPES = {
-  attraction: {
-    query: "관광지",
-    includedType: "tourist_attraction",
-  },
-  restaurant: {
-    query: "식당",
-    includedType: "restaurant",
-  },
+const FALLBACK_ATTRACTIONS = {
+  dadaepo: [
+    { names: { ko: "다대포 해변공원", en: "Dadaepo Beach Park", ja: "多大浦海浜公園", zh: "多大浦海滨公园" }, lat: 35.0458529, lon: 128.9669187 },
+    { names: { ko: "아미산 전망대", en: "Amisan Observatory", ja: "峨嵋山展望台", zh: "峨嵋山展望台" }, lat: 35.0527, lon: 128.9634 },
+  ],
+  gwangalli: [
+    { names: { ko: "민락수변공원", en: "Millak Waterside Park", ja: "民楽水辺公園", zh: "民乐水边公园" }, lat: 35.1547, lon: 129.1321 },
+    { names: { ko: "남천해변공원", en: "Namcheon Seaside Park", ja: "南川海辺公園", zh: "南川海滨公园" }, lat: 35.1466, lon: 129.1152 },
+  ],
+  songjeong: [
+    { names: { ko: "죽도공원", en: "Jukdo Park", ja: "竹島公園", zh: "竹岛公园" }, lat: 35.1815, lon: 129.2028 },
+    { names: { ko: "청사포 다릿돌전망대", en: "Cheongsapo Daritdol Observatory", ja: "青沙浦タリットル展望台", zh: "青沙浦踏石观景台" }, lat: 35.1647, lon: 129.1920 },
+  ],
+  haeundae: [
+    { names: { ko: "동백공원", en: "Dongbaek Park", ja: "冬柏公園", zh: "冬柏公园" }, lat: 35.1532, lon: 129.1514 },
+    { names: { ko: "해운대 블루라인파크", en: "Haeundae Blueline Park", ja: "海雲台ブルーラインパーク", zh: "海云台蓝线公园" }, lat: 35.1594, lon: 129.1731 },
+  ],
 };
 
 function distanceInMeters(lat1, lon1, lat2, lon2) {
@@ -21,99 +29,116 @@ function distanceInMeters(lat1, lon1, lat2, lon2) {
   const earthRadius = 6371000;
   const dLat = toRadians(lat2 - lat1);
   const dLon = toRadians(lon2 - lon1);
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRadians(lat1)) *
-      Math.cos(toRadians(lat2)) *
-      Math.sin(dLon / 2) ** 2;
+  const a = Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) * Math.sin(dLon / 2) ** 2;
   return Math.round(earthRadius * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+}
+
+function localizedName(item, lang) {
+  return item.names?.[lang] || item.names?.ko || item.display_name?.split(",")[0] || "OpenStreetMap place";
+}
+
+function fallbackPlaces(beachKey, beach, lang) {
+  return (FALLBACK_ATTRACTIONS[beachKey] || []).map((item, index) => ({
+    id: `curated-${beachKey}-${index}`,
+    name: localizedName(item, lang),
+    lat: item.lat,
+    lon: item.lon,
+    type: "attraction",
+    distance: distanceInMeters(beach.lat, beach.lon, item.lat, item.lon),
+    osmUri: `https://www.openstreetmap.org/?mlat=${item.lat}&mlon=${item.lon}#map=17/${item.lat}/${item.lon}`,
+    source: "OpenStreetMap",
+  }));
 }
 
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.setHeader("Cache-Control", "no-store");
+  res.setHeader("Cache-Control", "public, s-maxage=21600, stale-while-revalidate=86400");
 
   if (req.method === "OPTIONS") return res.status(204).end();
-  if (req.method !== "GET") return res.status(405).json({ error: "GET 요청만 사용할 수 있습니다." });
+  if (req.method !== "GET") return res.status(405).json({ error: "Only GET requests are supported." });
 
   const beachKey = typeof req.query?.beach === "string" ? req.query.beach : "";
   const type = typeof req.query?.type === "string" ? req.query.type : "";
+  const lang = ["ko", "en", "ja", "zh"].includes(req.query?.lang) ? req.query.lang : "ko";
   const beach = BEACHES[beachKey];
-  const placeType = PLACE_TYPES[type];
-  if (!beach || !placeType) return res.status(400).json({ error: "지원하지 않는 검색입니다." });
-  if (!process.env.GEMINI_API_KEY) {
-    return res.status(500).json({ error: "Google 지도 검색 설정이 완료되지 않았습니다." });
+  if (!beach || !["attraction", "restaurant"].includes(type)) {
+    return res.status(400).json({ error: "Unsupported beach or place type." });
   }
 
+  const halfWidth = type === "restaurant" ? 0.025 : 0.035;
+  const viewbox = [
+    beach.lon - halfWidth,
+    beach.lat + halfWidth,
+    beach.lon + halfWidth,
+    beach.lat - halfWidth,
+  ].join(",");
+  const query = type === "restaurant" ? "restaurant" : "park";
+  const url = new URL("https://nominatim.openstreetmap.org/search");
+  url.search = new URLSearchParams({
+    format: "jsonv2",
+    q: query,
+    viewbox,
+    bounded: "1",
+    limit: "12",
+    "accept-language": lang,
+  }).toString();
+
   try {
-    const response = await fetch("https://places.googleapis.com/v1/places:searchText", {
-      method: "POST",
+    const response = await fetch(url, {
       headers: {
-        "Content-Type": "application/json",
-        "X-Goog-Api-Key": process.env.GEMINI_API_KEY,
-        "X-Goog-FieldMask": "places.id,places.displayName,places.rating,places.location,places.googleMapsUri",
+        Accept: "application/json",
+        "Accept-Language": lang,
+        "User-Agent": "BusanBadaON/1.0 (https://naugim58-cloud.github.io/busanbada-on/)",
       },
-      body: JSON.stringify({
-        textQuery: `${beach.name} 근처 ${placeType.query}`,
-        includedType: placeType.includedType,
-        strictTypeFiltering: true,
-        minRating: 4.5,
-        maxResultCount: 10,
-        languageCode: "ko",
-        locationBias: {
-          circle: {
-            center: { latitude: beach.lat, longitude: beach.lon },
-            radius: 2500,
-          },
-        },
-      }),
+      signal: AbortSignal.timeout(6500),
     });
-    const result = await response.json();
-    if (!response.ok) {
-      console.error("Google Places search error", response.status, result?.error?.message);
-      return res.status(502).json({
-        error: "Google 지도 추천 장소를 불러오지 못했습니다.",
-        upstreamStatus: response.status,
-        upstreamCode: result?.error?.status || "UNKNOWN",
-      });
-    }
+    if (!response.ok) throw new Error(`Nominatim returned ${response.status}`);
+    const results = await response.json();
+    const places = results
+      .map((item) => ({
+        id: `osm-${item.osm_type}-${item.osm_id}`,
+        name: item.display_name?.split(",")[0] || localizedName(beach, lang),
+        lat: Number(item.lat),
+        lon: Number(item.lon),
+        type,
+        distance: distanceInMeters(beach.lat, beach.lon, Number(item.lat), Number(item.lon)),
+        osmUri: `https://www.openstreetmap.org/${item.osm_type === "node" ? "node" : item.osm_type === "way" ? "way" : "relation"}/${item.osm_id}`,
+        source: "OpenStreetMap",
+      }))
+      .filter((item) => Number.isFinite(item.lat) && Number.isFinite(item.lon))
+      .sort((a, b) => a.distance - b.distance)
+      .slice(0, 10);
 
-    const places = (result.places || [])
-      .map((place) => {
-        const rating = Number(place.rating);
-        const lat = Number(place.location?.latitude);
-        const lon = Number(place.location?.longitude);
-        if (!place.id || !place.displayName?.text || !place.googleMapsUri) return null;
-        if (!Number.isFinite(rating) || rating < 4.5 || rating > 5) return null;
-        if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
-        const distance = distanceInMeters(beach.lat, beach.lon, lat, lon);
-        if (distance > 2500) return null;
-        return {
-          id: place.id,
-          type,
-          name: place.displayName.text,
-          rating,
-          lat,
-          lon,
-          distance,
-          googleMapsUri: place.googleMapsUri,
-        };
-      })
-      .filter(Boolean)
-      .slice(0, 8);
-
+    const finalPlaces = type === "attraction" && places.length < 2
+      ? fallbackPlaces(beachKey, beach, lang)
+      : places;
     return res.status(200).json({
-      beach: beachKey,
+      beach: localizedName(beach, lang),
       type,
-      minimumRating: 4.5,
-      places,
-      source: "Google Maps",
-      checkedAt: new Date().toISOString(),
+      places: finalPlaces,
+      source: "OpenStreetMap Nominatim",
+      note: "OpenStreetMap does not provide a consistent rating field; no rating is inferred.",
     });
   } catch (error) {
-    console.error("Nearby rated places error", error);
-    return res.status(500).json({ error: "추천 장소 검색 중 오류가 발생했습니다." });
+    console.error("OpenStreetMap places error", error);
+    if (type === "attraction") {
+      return res.status(200).json({
+        beach: localizedName(beach, lang),
+        type,
+        places: fallbackPlaces(beachKey, beach, lang),
+        source: "OpenStreetMap curated fallback",
+        note: "Live search was unavailable, so verified OpenStreetMap landmarks are shown.",
+      });
+    }
+    return res.status(200).json({
+      beach: localizedName(beach, lang),
+      type,
+      places: [],
+      source: "OpenStreetMap Nominatim",
+      note: "The free place search is temporarily unavailable. Please retry shortly.",
+    });
   }
 }
