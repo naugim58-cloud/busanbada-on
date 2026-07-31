@@ -55,7 +55,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "지도 추천 검색 설정이 완료되지 않았습니다." });
   }
 
-  const prompt = `Search Google Maps for up to 8 ${placeType} within 2 kilometers of ${beach.name}.
+  const prompt = `You must use the Google Maps tool. Search Google Maps for up to 8 ${placeType} within 2 kilometers of ${beach.name}.
 Only include places whose current Google Maps rating is at least 4.5.
 Exclude any place unless its exact rating, latitude and longitude are available from Google Maps.
 Return one place per line and nothing else, using this exact tab-separated format:
@@ -63,7 +63,7 @@ PLACE NAME<TAB>RATING<TAB>LATITUDE<TAB>LONGITUDE`;
 
   try {
     const response = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent",
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
       {
         method: "POST",
         headers: {
