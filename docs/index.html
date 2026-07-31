@@ -74,7 +74,7 @@ const crowdText={ko:{title:'예상 인파',tag:'예측',levels:['여유','보통
 const creditsText={ko:'날씨: 기상청 해수욕장 실황 · 인파: 시간대·요일·계절·날씨 기반 무료 예측 · 미세먼지: Open-Meteo · 지도·장소: © OpenStreetMap contributors · 사진: Wikimedia Commons',en:'Weather: KMA beach observations · Crowd: free estimate based on time, weekday, season and weather · Air: Open-Meteo · Map & places: © OpenStreetMap contributors · Photos: Wikimedia Commons',ja:'天気: 気象庁海水浴場実況 · 混雑: 時間帯・曜日・季節・天気による無料予測 · 大気: Open-Meteo · 地図・場所: © OpenStreetMap contributors · 写真: Wikimedia Commons',zh:'天气：韩国气象厅海水浴场实况 · 人流：基于时段、星期、季节和天气的免费预测 · 空气：Open-Meteo · 地图与地点：© OpenStreetMap contributors · 图片：Wikimedia Commons'};
 const distanceText={ko:{button:'📍 현재 위치로 거리 확인',checking:'위치 확인 중…',prefix:'직선거리',error:'위치 권한을 허용해 주세요'},en:{button:'📍 Distance from me',checking:'Checking location…',prefix:'Air distance',error:'Please allow location access'},ja:{button:'📍 現在地からの距離',checking:'現在地を確認中…',prefix:'直線距離',error:'位置情報を許可してください'},zh:{button:'📍 距当前位置',checking:'正在确认位置…',prefix:'直线距离',error:'请允许位置权限'}};
 let currentLocation=null;
-const challengeText={ko:{title:'부산 해변 도장깨기',desc:'네 곳을 모두 방문 인증하고 완주 상품 응모권을 열어보세요.',verify:'📍 현장에서 방문 인증',privacy:'위치 정보는 인증 순간에만 사용되며 저장하지 않습니다.',checking:'현재 위치를 확인하고 있어요…',outside:'해변 인증 구역 안에서 다시 시도해 주세요.',error:'위치 권한을 허용하면 현장에서 인증할 수 있어요.',done:'🎉 4개 해변 완주! 상품 응모권이 열렸습니다.',stamped:' 도장을 획득했어요!'},en:{title:'Busan Beach Stamp Tour',desc:'Verify visits to all four beaches and unlock a prize entry.',verify:'📍 Verify my visit',privacy:'Location is used only for verification and is not stored.',checking:'Checking your location…',outside:'Please try again inside a beach verification zone.',error:'Allow location access to verify your visit.',done:'🎉 Tour complete! Your prize entry is unlocked.',stamped:' stamp unlocked!'},ja:{title:'釜山ビーチスタンプラリー',desc:'4つのビーチを訪問認証して景品応募権を獲得しましょう。',verify:'📍 現地で訪問認証',privacy:'位置情報は認証時のみ使用し、保存しません。',checking:'現在地を確認中…',outside:'ビーチ認証エリア内でもう一度お試しください。',error:'位置情報を許可すると現地認証できます。',done:'🎉 4ビーチ達成！景品応募権が開きました。',stamped:'のスタンプを獲得しました！'},zh:{title:'釜山海滩集章挑战',desc:'认证到访全部四个海滩，解锁奖品抽选资格。',verify:'📍 现场认证到访',privacy:'位置信息仅在认证时使用，不会保存。',checking:'正在确认当前位置…',outside:'请在海滩认证区域内重试。',error:'允许位置权限后即可现场认证。',done:'🎉 四个海滩全部完成！奖品抽选资格已解锁。',stamped:'印章已获得！'}};
+const challengeText={ko:{title:'부산 해변 도장깨기',desc:'네 곳을 모두 방문 인증하고 완주 상품 응모권을 열어보세요.',verify:'📍 현장에서 방문 인증',privacy:'해변 반경 1km 안에서 인증하세요. 위치는 저장하지 않습니다.',checking:'현재 위치를 확인하고 있어요…',outside:'가장 가까운 해변까지 {distance}예요. 해변 반경 1km 안에서 다시 시도해 주세요.',denied:'브라우저 설정에서 이 사이트의 위치 권한을 허용한 뒤 다시 눌러 주세요.',unavailable:'현재 위치를 확인할 수 없습니다. GPS를 켜고 다시 시도해 주세요.',timeout:'위치 확인 시간이 초과됐습니다. 하늘이 잘 보이는 곳에서 다시 시도해 주세요.',done:'🎉 4개 해변 완주! 상품 응모권이 열렸습니다.',stamped:' 도장을 획득했어요!'},en:{title:'Busan Beach Stamp Tour',desc:'Verify visits to all four beaches and unlock a prize entry.',verify:'📍 Verify my visit',privacy:'Verify within 1 km of a beach. Your location is not stored.',checking:'Checking your location…',outside:'The nearest beach is {distance} away. Retry within 1 km.',denied:'Allow location access for this site in your browser settings, then retry.',unavailable:'Your location is unavailable. Turn on GPS and retry.',timeout:'Location timed out. Move to an open area and retry.',done:'🎉 Tour complete! Your prize entry is unlocked.',stamped:' stamp unlocked!'},ja:{title:'釜山ビーチスタンプラリー',desc:'4つのビーチを訪問認証して景品応募権を獲得しましょう。',verify:'📍 現地で訪問認証',privacy:'ビーチから1km以内で認証してください。位置情報は保存しません。',checking:'現在地を確認中…',outside:'最寄りのビーチまで{distance}です。1km以内で再試行してください。',denied:'ブラウザ設定でこのサイトの位置情報を許可して再試行してください。',unavailable:'現在地を確認できません。GPSをオンにして再試行してください。',timeout:'位置確認がタイムアウトしました。開けた場所で再試行してください。',done:'🎉 4ビーチ達成！景品応募権が開きました。',stamped:'のスタンプを獲得しました！'},zh:{title:'釜山海滩集章挑战',desc:'认证到访全部四个海滩，解锁奖品抽选资格。',verify:'📍 现场认证到访',privacy:'请在海滩1公里范围内认证，位置信息不会保存。',checking:'正在确认当前位置…',outside:'最近的海滩距离{distance}，请在1公里范围内重试。',denied:'请在浏览器设置中允许此网站访问位置后重试。',unavailable:'无法确认当前位置，请开启 GPS 后重试。',timeout:'位置确认超时，请到开阔区域重试。',done:'🎉 四个海滩全部完成！奖品抽选资格已解锁。',stamped:'印章已获得！'}};
 const beachIds=['dadaepo','gwangalli','songjeong','haeundae'];
 let weatherRequestId=0;
 function toggleHelp(){document.getElementById('support').classList.toggle('open')}
@@ -184,11 +184,11 @@ function verifyVisit(){
   navigator.geolocation.getCurrentPosition(position=>{
     const distances=data.map(beach=>distanceMeters(position.coords.latitude,position.coords.longitude,beach.lat,beach.lon));
     const nearest=Math.min(...distances),index=distances.indexOf(nearest);
-    if(nearest<=700&&!visitedBeaches.includes(beachIds[index])){visitedBeaches=[...visitedBeaches,beachIds[index]];localStorage.setItem(STAMP_KEY,JSON.stringify(visitedBeaches));renderChallenge(data[index][lang]+copy.stamped)}
-    else if(nearest<=700)renderChallenge(data[index][lang]+' ✓');
-    else renderChallenge(copy.outside);
+    if(nearest<=1000&&!visitedBeaches.includes(beachIds[index])){visitedBeaches=[...visitedBeaches,beachIds[index]];localStorage.setItem(STAMP_KEY,JSON.stringify(visitedBeaches));renderChallenge(data[index][lang]+copy.stamped)}
+    else if(nearest<=1000)renderChallenge(data[index][lang]+' ✓');
+    else renderChallenge(copy.outside.replace('{distance}',formatDistance(nearest)));
     button.disabled=false;
-  },()=>{renderChallenge(copy.error);button.disabled=false},{enableHighAccuracy:true,timeout:12000,maximumAge:60000});
+  },error=>{renderChallenge(error.code===1?copy.denied:error.code===2?copy.unavailable:copy.timeout);button.disabled=false},{enableHighAccuracy:true,timeout:15000,maximumAge:30000});
 }
 const AI_ENDPOINT='https://busanbada-on.vercel.app/api/chat';
 const conversation=[];
@@ -211,7 +211,7 @@ async function aiRecommend(){
   const conditions=data.map((item,index)=>`${item[lang]}: 예상 인파 ${calculateCrowd(index).label}(${calculateCrowd(index).score}/100)${item.live?`, 기온 ${Math.round(item.live.temperature)}°, 1시간 강수량 ${item.live.rainAmount.toFixed(1)}mm`:''}`).join(' / ');
   const prompt=`사용자의 언어로 답하세요. 다대포, 광안리, 송정, 해운대 중 오늘 방문할 해변 하나만 추천하세요. 첫 줄은 '추천 바다: 해변명', 다음 줄은 '추천 이유: 구체적인 이유' 형식으로 작성하세요. 현재 정보: ${conditions}`;
   try{
-    const response=await fetch(AI_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:prompt,history:[]})});
+    const response=await fetch(AI_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:prompt,history:[],language:lang})});
     const result=await response.json();
     if(!response.ok||!result.answer)throw new Error('AI recommendation failed');
     answer.textContent=result.answer;
@@ -245,7 +245,7 @@ async function sendQuestion(){
     const response=await fetch(AI_ENDPOINT,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({question,history:conversation.slice(-6)})
+      body:JSON.stringify({question,history:conversation.slice(-6),language:lang})
     });
     const result=await response.json();
     if(!response.ok||!result.answer)throw new Error('AI response failed');
