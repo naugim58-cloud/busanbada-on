@@ -7,7 +7,14 @@ const SYSTEM_INSTRUCTION = `당신은 '부산바다 ON'의 친절한 AI 고객�
 부산의 다대포, 광안리, 송정, 해운대 해수욕장과 날씨, 인파, 주차장,
 화장실, 샤워실, 관광 및 해양 레저에 관한 질문에 간결하고 도움 되게 답하세요.
 확실하지 않은 실시간 정보는 추측하지 말고 현장 안내 또는 공식 정보를 확인하라고 말하세요.
-사용자가 질문한 언어로 답하세요.`;
+클라이언트가 지정한 답변 언어를 반드시 사용하세요.`;
+
+const RESPONSE_LANGUAGES = {
+  ko: "한국어",
+  en: "English",
+  ja: "日本語",
+  zh: "中文",
+};
 
 export default async function handler(req, res) {
   const origin = req.headers.origin || "";
@@ -24,6 +31,7 @@ export default async function handler(req, res) {
 
   const question = typeof req.body?.question === "string" ? req.body.question.trim() : "";
   const history = Array.isArray(req.body?.history) ? req.body.history.slice(-6) : [];
+  const language = RESPONSE_LANGUAGES[req.body?.language] || RESPONSE_LANGUAGES.ko;
   if (!question || question.length > 800) {
     return res.status(400).json({ error: "질문은 1~800자로 입력해 주세요." });
   }
@@ -50,7 +58,7 @@ export default async function handler(req, res) {
           "x-goog-api-key": process.env.GEMINI_API_KEY,
         },
         body: JSON.stringify({
-          systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
+          systemInstruction: { parts: [{ text: `${SYSTEM_INSTRUCTION}\n이번 답변은 반드시 ${language}로만 작성하세요.` }] },
           contents,
           generationConfig: { maxOutputTokens: 500 },
         }),
